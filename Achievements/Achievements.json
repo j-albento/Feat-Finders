@@ -1,0 +1,195 @@
+[
+    { "id": "Greenhorn", "type": "earn", "targetValue": 15000 },
+    { "id": "Cowpoke", "type": "earn", "targetValue": 50000 },
+    { "id": "Homesteader", "type": "earn", "targetValue": 250000 },
+    { "id": "Millionaire", "type": "earn", "targetValue": 1000000 },
+    { "id": "Legend", "type": "earn", "targetValue": 10000000 },
+
+    {
+        "id": "CompleteCollection",
+        "type": "collection",
+        "collectionType": "museum"
+    },
+
+    {
+        "id": "NewFriend",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 1
+    },
+    {
+        "id": "BestFriends",
+        "type": "friendship-count",
+        "heartRequirement": 10,
+        "npcCount": 1
+    },
+    {
+        "id": "BelovedFarmer",
+        "type": "friendship-count",
+        "heartRequirement": 10,
+        "npcCount": 8
+    },
+    {
+        "id": "Cliques",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 4
+    },
+    {
+        "id": "Networking",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 10
+    },
+    {
+        "id": "Popular",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 20
+    },
+
+    {
+        "id": "Cook",
+        "type": "collection",
+        "collectionType": "recipes",
+        "targetValue": 10
+    },
+    {
+        "id": "SousChef",
+        "type": "collection",
+        "collectionType": "recipes",
+        "targetValue": 25
+    },
+    { "id": "GourmetChef", "type": "collection", "collectionType": "recipes" },
+
+    { "id": "MovingUp", "type": "event", "eventKey": "house_upgrade_1" },
+    { "id": "LivingLarge", "type": "event", "eventKey": "house_upgrade_2" },
+
+    {
+        "id": "DIY",
+        "type": "collection",
+        "collectionType": "crafting",
+        "targetValue": 15
+    },
+    {
+        "id": "Artisan",
+        "type": "collection",
+        "collectionType": "crafting",
+        "targetValue": 30
+    },
+    { "id": "CraftMaster", "type": "collection", "collectionType": "crafting" },
+
+    {
+        "id": "Fisherman",
+        "type": "collection",
+        "collectionType": "fish",
+        "targetValue": 10
+    },
+    {
+        "id": "OlMariner",
+        "type": "collection",
+        "collectionType": "fish",
+        "targetValue": 24
+    },
+    { "id": "MasterAngler", "type": "collection", "collectionType": "fish" },
+    {
+        "id": "MotherCatch",
+        "type": "counter",
+        "counterType": "fishCaught",
+        "targetValue": 100
+    },
+
+    {
+        "id": "TreasureTrove",
+        "type": "collection",
+        "collectionType": "museum",
+        "targetValue": 40
+    },
+
+    { "id": "Gofer", "type": "quests", "targetValue": 10 },
+    { "id": "BigHelp", "type": "quests", "targetValue": 40 },
+
+    {
+        "id": "Polyculture",
+        "type": "shipping",
+        "mode": "each",
+        "amountPerCrop": 15
+    },
+    {
+        "id": "Monoculture",
+        "type": "shipping",
+        "mode": "single",
+        "targetValue": 300
+    },
+    {
+        "id": "FullShipment",
+        "type": "collection",
+        "collectionType": "shipping"
+    },
+
+    { "id": "PrairieKing", "type": "event", "eventKey": "prairie_king_win" },
+    {
+        "id": "FectorsChallenge",
+        "type": "event",
+        "eventKey": "prairie_king_no_death"
+    },
+
+    { "id": "TheBottom", "type": "depth", "targetValue": 120 },
+
+    {
+        "id": "LocalLegend",
+        "type": "event",
+        "eventKey": "community_center_complete"
+    },
+    {
+        "id": "JojaMember",
+        "type": "event",
+        "eventKey": "joja_projects_complete"
+    },
+
+    {
+        "id": "MysteryStardrops",
+        "type": "collection",
+        "collectionType": "stardrops"
+    },
+
+    { "id": "FullHouse", "type": "event", "eventKey": "family_complete" },
+
+    { "id": "SingularTalent", "type": "skill-level", "targetValue": 10 },
+    { "id": "MasterOfTheWays", "type": "all-skills", "requiredLevel": 10 },
+
+    {
+        "id": "ProtectorOfTheValley",
+        "type": "event",
+        "eventKey": "monster_slayer_complete"
+    },
+
+    {
+        "id": "DistantShore",
+        "type": "event",
+        "eventKey": "ginger_island_reached"
+    },
+    { "id": "WellRead", "type": "collection", "collectionType": "power_books" },
+    { "id": "TwoThumbsUp", "type": "event", "eventKey": "movie_seen" },
+
+    { "id": "BlueRibbon", "type": "event", "eventKey": "fair_first_place" },
+    { "id": "UnforgettableSoup", "type": "event", "eventKey": "luau_success" },
+    {
+        "id": "GoodNeighbors",
+        "type": "event",
+        "eventKey": "forest_family_complete"
+    },
+
+    {
+        "id": "DangerInTheDeep",
+        "type": "event",
+        "eventKey": "dangerous_mines_complete"
+    },
+    {
+        "id": "InfinitePower",
+        "type": "event",
+        "eventKey": "best_weapon_obtained"
+    },
+
+    { "id": "Perfection", "type": "event", "eventKey": "summit_reached" }
+]
