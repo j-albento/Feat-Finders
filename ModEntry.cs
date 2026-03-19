@@ -5,7 +5,7 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 
-namespace AchievementHuntersMod
+namespace FeatFinders
 {
   /// <summary>The mod entry point.</summary>
   internal sealed class ModEntry : Mod

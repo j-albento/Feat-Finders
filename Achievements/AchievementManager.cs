@@ -1,7 +1,5 @@
 /**
   This class updates an achivement's progress in response to game events
-
-
 **/
 
 
@@ -14,7 +12,6 @@ public class AchievementManager
   // properties
   List<Achievement> achievements;
 
-  
 
 
   // increments an achievement's current value (progress)

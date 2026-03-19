@@ -4,7 +4,7 @@
     and description, track current progress, track target for completion, and determine if its completed.
 **/
 
-namespace AchievementHuntersMod.Achievements
+namespace FeatFinders.Achievements
 {
     public class Achievement
     {

@@ -1,10 +1,10 @@
 {
-    "Name": "Achievement Hunters Mod",
+    "Name": "Feat Finders",
     "Author": "j-albento",
     "Version": "1.0.0",
-    "Description": "The Achievement Hunters mod is a modification to Stardew Valley that adds an additional UI interface that tracks a player's achievement progress in real-time.",
-    "UniqueID": "j-albento.Achievement Hunters Mod",
-    "EntryDll": "AchievementHuntersMod.dll",
+    "Description": "The Feat Finders mod is a modification to Stardew Valley that adds an additional UI interface that tracks a player's achievement progress in real-time.",
+    "UniqueID": "j-albento.Feat Finders",
+    "EntryDll": "FeatFinders.dll",
     "MinimumApiVersion": "4.0.0",
     "UpdateKeys": []
 }

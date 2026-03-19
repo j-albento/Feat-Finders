@@ -43,11 +43,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joann\\OneDrive\\Projects\\AchievementHuntersMod\\AchievementHuntersMod.csproj",
-      "projectName": "AchievementHuntersMod",
-      "projectPath": "C:\\Users\\joann\\OneDrive\\Projects\\AchievementHuntersMod\\AchievementHuntersMod.csproj",
+      "projectUniqueName": "C:\\Users\\joann\\OneDrive\\Projects\\Feat Finders\\FeatFinders.csproj",
+      "projectName": "FeatFinders",
+      "projectPath": "C:\\Users\\joann\\OneDrive\\Projects\\Feat Finders\\FeatFinders.csproj",
       "packagesPath": "C:\\Users\\joann\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joann\\OneDrive\\Projects\\AchievementHuntersMod\\obj\\",
+      "outputPath": "C:\\Users\\joann\\OneDrive\\Projects\\Feat Finders\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joann\\AppData\\Roaming\\NuGet\\NuGet.Config"
