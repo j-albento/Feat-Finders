@@ -1,0 +1,10 @@
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.csproj.AssemblyReference.cache
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.AssemblyInfoInputs.cache
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.AssemblyInfo.cs
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.csproj.CoreCompileInputs.cache
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.sourcelink.json
+C:\Users\joann\OneDrive\Projects\Feat Finders\bin\Debug\net8.0\Achievements\Achievements.json
+C:\Users\joann\OneDrive\Projects\Feat Finders\bin\Debug\net8.0\FeatFinders.deps.json
+C:\Users\joann\OneDrive\Projects\Feat Finders\bin\Debug\net8.0\FeatFinders.dll
+C:\Users\joann\OneDrive\Projects\Feat Finders\obj\Debug\net8.0\FeatFinders.dll

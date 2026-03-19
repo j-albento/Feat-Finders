@@ -1,0 +1,381 @@
+[
+    {
+        "id": "Greenhorn",
+        "name": "Greenhorn",
+        "description": "Earn 15,000g",
+        "type": "earn",
+        "targetValue": 15000
+    },
+    {
+        "id": "Cowpoke",
+        "name": "Cowpoke",
+        "description": "Earn 50,000g",
+        "type": "earn",
+        "targetValue": 50000
+    },
+    {
+        "id": "Homesteader",
+        "name": "Homesteader",
+        "description": "Earn 250,000g",
+        "type": "earn",
+        "targetValue": 250000
+    },
+    {
+        "id": "Millionaire",
+        "name": "Millionaire",
+        "description": "Earn 1,000,000g",
+        "type": "earn",
+        "targetValue": 1000000
+    },
+    {
+        "id": "Legend",
+        "name": "Legend",
+        "description": "Earn 10,000,000g",
+        "type": "earn",
+        "targetValue": 10000000
+    },
+
+    {
+        "id": "CompleteCollection",
+        "name": "A Complete Collection",
+        "description": "Complete the museum collection",
+        "type": "collection",
+        "collectionType": "museum"
+    },
+
+    {
+        "id": "NewFriend",
+        "name": "A New Friend",
+        "description": "Reach a 5-heart friend level with someone",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 1
+    },
+    {
+        "id": "BestFriends",
+        "name": "Best Friends",
+        "description": "Reach a 10-heart friend level with someone",
+        "type": "friendship-count",
+        "heartRequirement": 10,
+        "npcCount": 1
+    },
+    {
+        "id": "BelovedFarmer",
+        "name": "The Beloved Farmer",
+        "description": "Reach a 10-heart friend level with 8 people",
+        "type": "friendship-count",
+        "heartRequirement": 10,
+        "npcCount": 8
+    },
+    {
+        "id": "Cliques",
+        "name": "Cliques",
+        "description": "Reach a 5-heart friend level with 4 people",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 4
+    },
+    {
+        "id": "Networking",
+        "name": "Networking",
+        "description": "Reach a 5-heart friend level with 10 people",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 10
+    },
+    {
+        "id": "Popular",
+        "name": "Popular",
+        "description": "Reach a 5-heart friend level with 20 people",
+        "type": "friendship-count",
+        "heartRequirement": 5,
+        "npcCount": 20
+    },
+
+    {
+        "id": "Cook",
+        "name": "Cook",
+        "description": "Cook 10 different recipes",
+        "type": "collection",
+        "collectionType": "recipes",
+        "targetValue": 10
+    },
+    {
+        "id": "SousChef",
+        "name": "Sous Chef",
+        "description": "Cook 25 different recipes",
+        "type": "collection",
+        "collectionType": "recipes",
+        "targetValue": 25
+    },
+    {
+        "id": "GourmetChef",
+        "name": "Gourmet Chef",
+        "description": "Cook every recipe",
+        "type": "collection",
+        "collectionType": "recipes"
+    },
+
+    {
+        "id": "MovingUp",
+        "name": "Moving Up",
+        "description": "Upgrade your house",
+        "type": "event",
+        "eventKey": "house_upgrade_1"
+    },
+    {
+        "id": "LivingLarge",
+        "name": "Living Large",
+        "description": "Upgrade your house to the maximum size",
+        "type": "event",
+        "eventKey": "house_upgrade_2"
+    },
+
+    {
+        "id": "DIY",
+        "name": "D.I.Y.",
+        "description": "Craft 15 different items",
+        "type": "collection",
+        "collectionType": "crafting",
+        "targetValue": 15
+    },
+    {
+        "id": "Artisan",
+        "name": "Artisan",
+        "description": "Craft 30 different items",
+        "type": "collection",
+        "collectionType": "crafting",
+        "targetValue": 30
+    },
+    {
+        "id": "CraftMaster",
+        "name": "Craft Master",
+        "description": "Craft every item",
+        "type": "collection",
+        "collectionType": "crafting"
+    },
+
+    {
+        "id": "Fisherman",
+        "name": "Fisherman",
+        "description": "Catch 10 different fish",
+        "type": "collection",
+        "collectionType": "fish",
+        "targetValue": 10
+    },
+    {
+        "id": "OlMariner",
+        "name": "Ol' Mariner",
+        "description": "Catch 24 different fish",
+        "type": "collection",
+        "collectionType": "fish",
+        "targetValue": 24
+    },
+    {
+        "id": "MasterAngler",
+        "name": "Master Angler",
+        "description": "Catch every fish",
+        "type": "collection",
+        "collectionType": "fish"
+    },
+    {
+        "id": "MotherCatch",
+        "name": "Mother Catch",
+        "description": "Catch 100 fish",
+        "type": "counter",
+        "counterType": "fishCaught",
+        "targetValue": 100
+    },
+
+    {
+        "id": "TreasureTrove",
+        "name": "Treasure Trove",
+        "description": "Donate 40 items to the museum",
+        "type": "collection",
+        "collectionType": "museum",
+        "targetValue": 40
+    },
+
+    {
+        "id": "Gofer",
+        "name": "Gofer",
+        "description": "Complete 10 Help Wanted requests",
+        "type": "quests",
+        "targetValue": 10
+    },
+    {
+        "id": "BigHelp",
+        "name": "A Big Help",
+        "description": "Complete 40 Help Wanted requests",
+        "type": "quests",
+        "targetValue": 40
+    },
+
+    {
+        "id": "Polyculture",
+        "name": "Polyculture",
+        "description": "Ship 15 of each crop",
+        "type": "shipping",
+        "mode": "each",
+        "amountPerCrop": 15
+    },
+    {
+        "id": "Monoculture",
+        "name": "Monoculture",
+        "description": "Ship 300 of one crop",
+        "type": "shipping",
+        "mode": "single",
+        "targetValue": 300
+    },
+    {
+        "id": "FullShipment",
+        "name": "Full Shipment",
+        "description": "Ship every item",
+        "type": "collection",
+        "collectionType": "shipping"
+    },
+
+    {
+        "id": "PrairieKing",
+        "name": "Prairie King",
+        "description": "Beat Journey of the Prairie King",
+        "type": "event",
+        "eventKey": "prairie_king_win"
+    },
+    {
+        "id": "FectorsChallenge",
+        "name": "Fector's Challenge",
+        "description": "Beat Journey of the Prairie King without dying",
+        "type": "event",
+        "eventKey": "prairie_king_no_death"
+    },
+
+    {
+        "id": "TheBottom",
+        "name": "The Bottom",
+        "description": "Reach the lowest level of the mines",
+        "type": "depth",
+        "targetValue": 120
+    },
+
+    {
+        "id": "LocalLegend",
+        "name": "Local Legend",
+        "description": "Restore the Community Center",
+        "type": "event",
+        "eventKey": "community_center_complete"
+    },
+    {
+        "id": "JojaMember",
+        "name": "Joja Co. Member Of The Year",
+        "description": "Purchase all Joja projects",
+        "type": "event",
+        "eventKey": "joja_projects_complete"
+    },
+
+    {
+        "id": "MysteryStardrops",
+        "name": "Mystery Of The Stardrops",
+        "description": "Find every stardrop",
+        "type": "collection",
+        "collectionType": "stardrops"
+    },
+
+    {
+        "id": "FullHouse",
+        "name": "Full House",
+        "description": "Get married and have two kids",
+        "type": "event",
+        "eventKey": "family_complete"
+    },
+
+    {
+        "id": "SingularTalent",
+        "name": "Singular Talent",
+        "description": "Reach level 10 in a skill",
+        "type": "skill-level",
+        "targetValue": 10
+    },
+    {
+        "id": "MasterOfTheWays",
+        "name": "Master Of The Ways",
+        "description": "Reach level 10 in every skill",
+        "type": "all-skills",
+        "requiredLevel": 10
+    },
+
+    {
+        "id": "ProtectorOfTheValley",
+        "name": "Protector Of The Valley",
+        "description": "Complete all Monster Slayer goals",
+        "type": "event",
+        "eventKey": "monster_slayer_complete"
+    },
+
+    {
+        "id": "DistantShore",
+        "name": "A Distant Shore",
+        "description": "Reach Ginger Island",
+        "type": "event",
+        "eventKey": "ginger_island_reached"
+    },
+    {
+        "id": "WellRead",
+        "name": "Well-Read",
+        "description": "Read every power book",
+        "type": "collection",
+        "collectionType": "power_books"
+    },
+    {
+        "id": "TwoThumbsUp",
+        "name": "Two Thumbs Up",
+        "description": "See a movie",
+        "type": "event",
+        "eventKey": "movie_seen"
+    },
+
+    {
+        "id": "BlueRibbon",
+        "name": "Blue Ribbon",
+        "description": "Win 1st place at the Stardew Valley Fair",
+        "type": "event",
+        "eventKey": "fair_first_place"
+    },
+    {
+        "id": "UnforgettableSoup",
+        "name": "An Unforgettable Soup",
+        "description": "Delight the Governor",
+        "type": "event",
+        "eventKey": "luau_success"
+    },
+    {
+        "id": "GoodNeighbors",
+        "name": "Good Neighbors",
+        "description": "Help your forest neighbors grow their family",
+        "type": "event",
+        "eventKey": "forest_family_complete"
+    },
+
+    {
+        "id": "DangerInTheDeep",
+        "name": "Danger In The Deep",
+        "description": "Reach the bottom of the dangerous mines",
+        "type": "event",
+        "eventKey": "dangerous_mines_complete"
+    },
+    {
+        "id": "InfinitePower",
+        "name": "Infinite Power",
+        "description": "Obtain the most powerful weapon",
+        "type": "event",
+        "eventKey": "best_weapon_obtained"
+    },
+
+    {
+        "id": "Perfection",
+        "name": "Perfection",
+        "description": "Reach the summit",
+        "type": "event",
+        "eventKey": "summit_reached"
+    }
+]
