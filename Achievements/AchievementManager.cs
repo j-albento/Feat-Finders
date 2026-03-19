@@ -12,6 +12,11 @@ public class AchievementManager
   // properties
   List<Achievement> achievements;
 
+  public void LoadAchievements()
+  {
+    string fileContents;
+  }
+
 
 
   // increments an achievement's current value (progress)
