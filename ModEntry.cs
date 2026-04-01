@@ -151,7 +151,6 @@ namespace FeatFinders
     {
       if (!IsWorldReady()) return;
 
-
       if (e.IsMultipleOf(3600))
       {
         foreach (Achievement achievement in AchievementManager.Achievements)
@@ -169,12 +168,12 @@ namespace FeatFinders
               {
                 npcCount++;
               }
-              if (npcCount >= achievement.NpcCount)
-              {
-                AchievementManager.MarkComplete(achievement);
-              }
-              Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
             }
+            if (npcCount >= achievement.NpcCount)
+            {
+              AchievementManager.MarkComplete(achievement);
+            }
+            Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
           }
         }
       }
