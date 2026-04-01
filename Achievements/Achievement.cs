@@ -10,13 +10,13 @@ namespace FeatFinders.Achievements
         public string Description { get; set; }
         public string Type { get; set; }
 
-        // Remove '?' from strings
+        
         public string CollectionType { get; set; }
         public string EventKey { get; set; }
         public string CounterType { get; set; }
         public string Mode { get; set; }
 
-        // Keep '?' on ints (value types)
+    
         public int? HeartRequirement { get; set; }
         public int? NpcCount { get; set; }
         public int? AmountPerCrop { get; set; }

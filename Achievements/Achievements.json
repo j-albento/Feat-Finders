@@ -255,6 +255,7 @@
         "name": "The Bottom",
         "description": "Reach the lowest level of the mines",
         "type": "depth",
+        "mode": "regular",
         "targetValue": 120
     },
 
@@ -361,6 +362,7 @@
         "name": "Danger In The Deep",
         "description": "Reach the bottom of the dangerous mines",
         "type": "event",
+        "mode": "regular_dangerous",
         "eventKey": "dangerous_mines_complete"
     },
     {
@@ -370,7 +372,6 @@
         "type": "event",
         "eventKey": "best_weapon_obtained"
     },
-
     {
         "id": "Perfection",
         "name": "Perfection",

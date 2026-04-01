@@ -34,7 +34,7 @@ namespace FeatFinders
       LoadAchievements();
     }
 
-    // Load the Achievements json file and create a list<Achievement> of Achievement objects
+    // Load the Achievements json file and create a list of Achievement objects
     private void LoadAchievements()
     {
       Achievements = Helper.Data.ReadJsonFile<List<Achievement>>(achievementsJSON);
@@ -59,12 +59,9 @@ namespace FeatFinders
 
 
     // marks an achivement as complete only if isComplete is true
-    private void MarkComplete(Achievement achievement, bool isComplete)
+    public static void MarkComplete(Achievement achievement)
     {
-      if (isComplete)
-      {
-        achievement.Completed = true;
-      }
+      achievement.Completed = true;
     }
   }
 }
