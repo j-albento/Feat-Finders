@@ -172,8 +172,9 @@ namespace FeatFinders
             if (npcCount >= achievement.NpcCount)
             {
               AchievementManager.MarkComplete(achievement);
+              Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
             }
-            Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
+           
           }
         }
       }
