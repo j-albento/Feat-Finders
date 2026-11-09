@@ -1,5 +1,4 @@
 using System;
-using System.Security.Cryptography;
 
 namespace FeatFinders.Achievements
 {
@@ -10,13 +9,13 @@ namespace FeatFinders.Achievements
         public string Description { get; set; }
         public string Type { get; set; }
 
-        
+
         public string CollectionType { get; set; }
         public string EventKey { get; set; }
         public string CounterType { get; set; }
         public string Mode { get; set; }
 
-    
+
         public int? HeartRequirement { get; set; }
         public int? NpcCount { get; set; }
         public int? AmountPerCrop { get; set; }
@@ -28,12 +27,15 @@ namespace FeatFinders.Achievements
 
         public Achievement() { }
 
+        // Used when an action adds to a player's progress
         public void Increment(double amount = 1)
         {
             if (Completed)
-            {
                 return;
-            }
+
+            if (amount <= 0)
+                return;
+
 
             CurrentValue += amount;
             CheckCompletion();
@@ -64,6 +66,20 @@ namespace FeatFinders.Achievements
 
             // maximum of 100 to prevent UI overflow
             return (int)Math.Min(100, Math.Ceiling(percent));
+        }
+
+        // Used when a players current total is already known
+        public void SetProgress(double value)
+        {
+            if (Completed)
+                return;
+
+            if (value < 0)
+                return;
+
+            if (value <= CurrentValue)
+                return;
+            CurrentValue = value;
         }
 
 

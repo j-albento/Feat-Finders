@@ -5,7 +5,6 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 using FeatFinders.Achievements;
-using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
 using StardewModdingAPI.Framework.ModLoading.Rewriters.StardewValley_1_6;
 
@@ -27,7 +26,18 @@ namespace FeatFinders
       AchievementManager = new AchievementManager(Monitor, helper);
 
       // helper.Events.Input.ButtonPressed += this.OnButtonPressed;
-      helper.ConsoleCommands.Add("check_achievements", "Prints the currently loaded achievements.\n\nUsage: check_achievements", PrintAchievements);
+      helper.ConsoleCommands.Add(
+        "check_achievements",
+        "Prints the currently loaded achievements.\n\nUsage: check_achievements",
+        PrintAchievements
+      );
+
+      helper.ConsoleCommands.Add("check_fishing_stats", "Displays the player's fishing statistics.", CheckFishingStats);
+      helper.ConsoleCommands.Add(
+          "inspect_fish",
+          "Displays the player's fishing records.",
+          CheckFishingStats
+      );
 
       // subscribed
       helper.Events.GameLoop.UpdateTicked += OnMoneyGained;
@@ -35,6 +45,7 @@ namespace FeatFinders
       helper.Events.GameLoop.UpdateTicked += OnEventCompleted;
       helper.Events.GameLoop.UpdateTicked += OnFriendCountCompleted;
       helper.Events.Player.Warped += OnDepthReached;
+      helper.Events.GameLoop.UpdateTicked += OnFishingAchievementsUpdate;
     }
 
 
@@ -58,14 +69,16 @@ namespace FeatFinders
     /// <param name="sender">The event sender.</param>
     /// <param name="e">The event data.</param>
     /// 
-    private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
-    {
-      // ignore if player hasn't loaded a save yet
-      if (!IsWorldReady()) return;
+    // private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
+    // {
+    //   // ignore if player hasn't loaded a save yet
+    //   if (!IsWorldReady()) return;
 
-      // print button presses to the console window
-      Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
-    }
+    //   // print button presses to the console window
+    //   Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+    // }
+
+
 
     // tick based method used to track money gained by player, fires only 
     private void OnMoneyGained(object sender, UpdateTickedEventArgs e)
@@ -174,7 +187,7 @@ namespace FeatFinders
               AchievementManager.MarkComplete(achievement);
               Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
             }
-           
+
           }
         }
       }
@@ -216,10 +229,6 @@ namespace FeatFinders
           }
         }
       }
-
-
-
-
     }
 
 
@@ -236,6 +245,74 @@ namespace FeatFinders
         }
       }
       return true;
+    }
+
+    private void CheckFishingStats(string command, string[] args)
+    {
+      if (!IsWorldReady())
+        return;
+
+      uint totalFishCaught = Game1.player.stats.FishCaught;
+
+      Monitor.Log(
+          $"Total fish caught: {totalFishCaught}",
+          LogLevel.Info
+      );
+
+      var fishRecords = Game1.player.fishCaught;
+
+      int uniqueFishCount = 0;
+
+      foreach (var fish in fishRecords.Pairs)
+      {
+        uniqueFishCount++;
+
+        string fishId = fish.Key;
+        string fishName = ItemRegistry.GetData(fishId).DisplayName;
+
+        Monitor.Log(
+            $"Name: {fishName} | " +
+            $"ID: {fishId} | " +
+            $"Quantity: {fish.Value[0]} | " +
+            $"Largest Catch: {fish.Value[1]} in\" ",
+            LogLevel.Info
+        );
+      }
+
+      Monitor.Log(
+          $"Different fish IDs recorded: {uniqueFishCount}",
+          LogLevel.Info
+      );
+    }
+
+    private void UpdateFishingAchievements()
+    {
+      if (!IsWorldReady())
+        return;
+
+      var fishRecords = Game1.player.fishCaught;
+
+      int uniqueFishCount = fishRecords.Pairs.Count();
+
+      AchievementManager.UpdateUniqueFishProgress(uniqueFishCount);
+
+      uint totalFishCaught = Game1.player.stats.FishCaught;
+
+      AchievementManager.UpdateTotalFishProgress(totalFishCaught);
+    }
+
+
+    private void OnFishingAchievementsUpdate(
+    object sender,
+    UpdateTickedEventArgs e)
+    {
+      if (!IsWorldReady())
+        return;
+
+      if (e.IsMultipleOf(3600))
+      {
+        UpdateFishingAchievements();
+      }
     }
 
 
