@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FeatFinders")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5878ac110d201056c59441a10d4629c3b8eeaa46")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cf922e00d1f9333ce09f374ee0189af34c9752b")]
 [assembly: System.Reflection.AssemblyProductAttribute("FeatFinders")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FeatFinders")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

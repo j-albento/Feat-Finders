@@ -30,20 +30,19 @@ namespace FeatFinders.Achievements
         // Used when an action adds to a player's progress
         public void Increment(double amount = 1)
         {
-            if (Completed)
+            if (Completed || amount <= 0)
                 return;
 
-            if (amount <= 0)
-                return;
-
-
-            CurrentValue += amount;
-            CheckCompletion();
+            SetProgress(CurrentValue + amount);
         }
 
         public bool CheckCompletion()
         {
-            if (TargetValue.HasValue && CurrentValue >= TargetValue.Value)
+            if (Completed)
+                return true;
+
+            if (TargetValue.HasValue &&
+            CurrentValue >= TargetValue.Value)
             {
                 Completed = true;
             }
@@ -56,11 +55,10 @@ namespace FeatFinders.Achievements
             {
                 return 100;
             }
-            if (!TargetValue.HasValue || TargetValue.Value == 0)
+            if (!TargetValue.HasValue || TargetValue.Value <= 0)
             {
                 return 0;
             }
-
 
             double percent = (CurrentValue / TargetValue.Value) * 100;
 
@@ -74,12 +72,14 @@ namespace FeatFinders.Achievements
             if (Completed)
                 return;
 
-            if (value < 0)
-                return;
+            CurrentValue = Math.Max(0, value);
 
-            if (value <= CurrentValue)
-                return;
-            CurrentValue = value;
+            if (TargetValue.HasValue)
+            {
+                CurrentValue = Math.Min(CurrentValue, TargetValue.Value);
+
+            }
+            CheckCompletion();
         }
 
 

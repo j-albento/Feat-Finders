@@ -57,11 +57,7 @@ namespace FeatFinders
       return Context.IsWorldReady;
     }
 
-    // helper method to check if an achievement has been achieved
-    private static bool IsCompleted(Achievement achievement)
-    {
-      return achievement.Completed;
-    }
+
     private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
     {
       AchievementManager.LoadProgress();
@@ -107,23 +103,17 @@ namespace FeatFinders
 
         foreach (Achievement achievement in AchievementManager.Achievements)
         {
-          if (IsCompleted(achievement)) continue; // continue to the next achievement
+          if (achievement.Completed) continue; // continue to the next achievement
 
-          if (achievement.Type == "earn" && !achievement.Completed)
+          if (achievement.Type == "earn")
           {
             // update achievements current progress value to the players lifetime earnings
-            achievement.CurrentValue = lifeTimeEarnings;
-
-            Monitor.Log($"{Game1.player.Name} has gained {lifeTimeEarnings}/{achievement.TargetValue} gold.", LogLevel.Debug);
-
-            if (lifeTimeEarnings >= achievement.TargetValue)
-            {
-              AchievementManager.MarkComplete(achievement);
-            }
+            AchievementManager.SetProgress(achievement, lifeTimeEarnings);
           }
         }
       }
     }
+
 
     private void OnLevelChanged(object sender, LevelChangedEventArgs e)
     {
@@ -134,16 +124,20 @@ namespace FeatFinders
       // get the player and their previous skill level and their new skill level
       foreach (Achievement achievement in AchievementManager.Achievements)
       {
-        if (IsCompleted(achievement)) continue; // if the achievement is already completed
+        if (achievement.Completed) continue; // if the achievement is already completed
 
         // Handle single skill achievements
-        if (achievement.Type == "skill-level" && e.NewLevel >= achievement.TargetValue)
+        if (achievement.Type == "skill-level" &&
+        e.NewLevel >= achievement.TargetValue)
         {
-          AchievementManager.MarkComplete(achievement);
+          AchievementManager.CompleteAchievement(achievement);
         }
-        else if (achievement.Type == "all-skills" && HasAllSkills(achievement.RequiredLevel.Value))
+        // handle all skill achievements
+        else if (achievement.Type == "all-skills" &&
+        achievement.RequiredLevel.HasValue &&
+        HasAllSkills(achievement.RequiredLevel.Value))
         {
-          AchievementManager.MarkComplete(achievement);
+          AchievementManager.SetProgress(achievement, achievement.RequiredLevel.Value);
         }
       }
     }
@@ -154,20 +148,20 @@ namespace FeatFinders
     {
       if (!IsWorldReady()) return;
 
-
       if (e.IsMultipleOf(3600))
       {
         foreach (Achievement achievement in AchievementManager.Achievements)
         {
-          if (IsCompleted(achievement)) continue;
+          if (achievement.Completed) continue;
 
-          if (achievement.Type == "event" && achievement.EventKey != null)
+          if (achievement.Type == "event" &&
+              !string.IsNullOrEmpty(achievement.EventKey))
           {
             // Check if the player's seen events list contains the target EventKey
             if (Game1.player.eventsSeen.Contains(achievement.EventKey))
             {
-              AchievementManager.MarkComplete(achievement);
-              Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
+              AchievementManager.SetProgress(achievement, 1);
+
             }
           }
         }
@@ -199,7 +193,7 @@ namespace FeatFinders
             }
             if (npcCount >= achievement.NpcCount)
             {
-              AchievementManager.MarkComplete(achievement);
+              AchievementManager.CompleteAchievement(achievement);
               Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
             }
 
@@ -238,17 +232,13 @@ namespace FeatFinders
           {
             if (achievement.TargetValue.HasValue && currentDepth >= achievement.TargetValue.Value)
             {
-              AchievementManager.MarkComplete(achievement);
+              AchievementManager.CompleteAchievement(achievement);
               Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
             }
           }
         }
       }
     }
-
-
-
-
 
     private bool HasAllSkills(int targetLevel)
     {
@@ -316,7 +306,6 @@ namespace FeatFinders
       AchievementManager.UpdateTotalFishProgress(totalFishCaught);
     }
 
-
     private void OnFishingAchievementsUpdate(
     object sender,
     UpdateTickedEventArgs e)
@@ -329,6 +318,8 @@ namespace FeatFinders
         UpdateFishingAchievements();
       }
     }
+
+  
 
 
 

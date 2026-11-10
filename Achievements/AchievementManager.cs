@@ -48,8 +48,6 @@ namespace FeatFinders
         Monitor.Log("No saved achievement progress found.", LogLevel.Info);
         return;
       }
-
-
     }
 
     public void SaveProgress()
@@ -71,6 +69,66 @@ namespace FeatFinders
       }
     }
 
+    public void SetProgress(Achievement achievement, double value)
+    {
+      if (achievement == null || achievement.Completed)
+        return;
+
+      achievement.SetProgress(value);
+
+      if (achievement.Completed)
+      {
+        Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
+      }
+    }
+
+    public void IncrementProgress(Achievement achievement, double amount = 1)
+    {
+      if (achievement == null || achievement.Completed) return;
+
+      achievement.Increment(amount);
+
+      if (achievement.Completed)
+      {
+        Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
+      }
+    }
+
+    public void UpdateProgress(string achievementId, double value)
+    {
+      Achievement achievement = Achievements.Find(
+        a => a.Id == achievementId
+      );
+
+      if (achievement == null)
+        return;
+
+      SetProgress(achievement, value);
+    }
+
+    public void CheckCompletion(Achievement achievement)
+    {
+      if (achievement == null || achievement.Completed)
+        return;
+
+      if (achievement.CheckCompletion())
+      {
+        Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
+      }
+    }
+
+    public void CompleteAchievement(Achievement achievement)
+    {
+      if (achievement == null || achievement.Completed)
+        return;
+
+      achievement.Completed = true;
+
+      Monitor.Log(
+          $"Unlocked: {achievement.Name}!",
+          LogLevel.Info
+      );
+    }
 
 
     // Load the Achievements json file and create a list of Achievement objects
@@ -135,13 +193,6 @@ namespace FeatFinders
     }
 
 
-    // marks an achivement as complete only if isComplete is true
-    public static void MarkComplete(Achievement achievement)
-    {
-      achievement.Completed = true;
-    }
-
-
     public void UpdateUniqueFishProgress(int uniqueFishCount)
     {
       const int totalFishRequired = 72;
@@ -162,7 +213,7 @@ namespace FeatFinders
 
           if (uniqueFishCount >= totalFishRequired)
           {
-            MarkComplete(achievement);
+            CompleteAchievement(achievement);
 
             Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
           }
