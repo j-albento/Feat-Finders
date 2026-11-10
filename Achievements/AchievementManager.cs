@@ -29,6 +29,48 @@ namespace FeatFinders
       ValidateAchievements();
     }
 
+    public void LoadProgress()
+    {
+      // Reset progress first, so another save file cannot carry over progress from a previous save file.
+      foreach (Achievement achievement in Achievements)
+      {
+        achievement.CurrentValue = 0;
+        achievement.Completed = false;
+      }
+
+      // retrieve saved progress
+      var savedProgress = Helper.Data.ReadSaveData<List<AchievementProgress>>(
+        "achievement-progress"
+        );
+
+      if (savedProgress == null)
+      {
+        Monitor.Log("No saved achievement progress found.", LogLevel.Info);
+        return;
+      }
+
+
+    }
+
+    public void SaveProgress()
+    {
+      List<AchievementProgress> savedProgress = new List<AchievementProgress>();
+      if (savedProgress != null)
+      {
+        foreach (var achievement in Achievements)
+        {
+          savedProgress.Add(new AchievementProgress
+          {
+            Id = achievement.Id,
+            CurrentValue = achievement.CurrentValue,
+            Completed = achievement.Completed
+          });
+        }
+
+        Monitor.Log("Saved achievement progress for " + savedProgress.Count + " achievements.", LogLevel.Info);
+      }
+    }
+
 
 
     // Load the Achievements json file and create a list of Achievement objects

@@ -46,6 +46,8 @@ namespace FeatFinders
       helper.Events.GameLoop.UpdateTicked += OnFriendCountCompleted;
       helper.Events.Player.Warped += OnDepthReached;
       helper.Events.GameLoop.UpdateTicked += OnFishingAchievementsUpdate;
+      helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
+      helper.Events.GameLoop.Saving += OnSaving;
     }
 
 
@@ -59,6 +61,19 @@ namespace FeatFinders
     private static bool IsCompleted(Achievement achievement)
     {
       return achievement.Completed;
+    }
+    private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+    {
+      AchievementManager.LoadProgress();
+    }
+    private void OnSaving(object sender, SavingEventArgs e)
+    {
+      // Only the main player should save progress to avoid conflicts in multiplayer
+      if (!Context.IsMainPlayer)
+      {
+        return;
+      }
+      AchievementManager.SaveProgress();
     }
 
 
