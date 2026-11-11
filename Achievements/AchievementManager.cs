@@ -48,26 +48,43 @@ namespace FeatFinders
         Monitor.Log("No saved achievement progress found.", LogLevel.Info);
         return;
       }
+
+      foreach (AchievementProgress progress in savedProgress)
+      {
+        foreach (Achievement achievement in Achievements)
+        {
+          if (achievement.Id != progress.Id) continue;
+
+          achievement.CurrentValue = progress.CurrentValue;
+          achievement.Completed = progress.Completed;
+
+          break;
+        }
+      }
+
+      Monitor.Log("Loaded achievement progress for " + savedProgress.Count + " achievements.",
+                  LogLevel.Info);
     }
 
     public void SaveProgress()
     {
       List<AchievementProgress> savedProgress = new List<AchievementProgress>();
-      if (savedProgress != null)
-      {
-        foreach (var achievement in Achievements)
-        {
-          savedProgress.Add(new AchievementProgress
-          {
-            Id = achievement.Id,
-            CurrentValue = achievement.CurrentValue,
-            Completed = achievement.Completed
-          });
-        }
 
-        Monitor.Log("Saved achievement progress for " + savedProgress.Count + " achievements.", LogLevel.Info);
+
+      foreach (var achievement in Achievements)
+      {
+        savedProgress.Add(new AchievementProgress
+        {
+          Id = achievement.Id,
+          CurrentValue = achievement.CurrentValue,
+          Completed = achievement.Completed
+        });
       }
+      Helper.Data.WriteSaveData("achievement-progress", savedProgress);
+
+      Monitor.Log("Saved achievement progress for " + savedProgress.Count + " achievements.", LogLevel.Info);
     }
+
 
     public void SetProgress(Achievement achievement, double value)
     {
@@ -94,28 +111,6 @@ namespace FeatFinders
       }
     }
 
-    public void UpdateProgress(string achievementId, double value)
-    {
-      Achievement achievement = Achievements.Find(
-        a => a.Id == achievementId
-      );
-
-      if (achievement == null)
-        return;
-
-      SetProgress(achievement, value);
-    }
-
-    public void CheckCompletion(Achievement achievement)
-    {
-      if (achievement == null || achievement.Completed)
-        return;
-
-      if (achievement.CheckCompletion())
-      {
-        Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
-      }
-    }
 
     public void CompleteAchievement(Achievement achievement)
     {
@@ -185,20 +180,13 @@ namespace FeatFinders
     }
 
 
-
-    // increments an achievement's current value (progress)
-    public void UpdateProgress(Achievement achievement)
-    {
-      achievement.Increment();
-    }
-
-
     public void UpdateUniqueFishProgress(int uniqueFishCount)
     {
       const int totalFishRequired = 72;
 
       foreach (Achievement achievement in Achievements)
       {
+
         if (achievement.Completed)
           continue;
 
@@ -209,27 +197,18 @@ namespace FeatFinders
         // handles MasterAngler separately
         if (achievement.Id == "MasterAngler")
         {
-          achievement.CurrentValue = uniqueFishCount;
+          SetProgress(achievement, uniqueFishCount);
 
           if (uniqueFishCount >= totalFishRequired)
-          {
             CompleteAchievement(achievement);
-
-            Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
-          }
-          continue;
         }
-
-        // handles Fisherman and OlMariner
-        if (!achievement.TargetValue.HasValue) continue;
-
-        if (achievement.CheckCompletion())
+        else
         {
-          Monitor.Log("Unlocked: " + achievement.Name, LogLevel.Info);
+          SetProgress(achievement, uniqueFishCount);
         }
-
       }
     }
+
     public void UpdateTotalFishProgress(uint totalFishCaught)
     {
       foreach (Achievement achievement in Achievements)
@@ -241,15 +220,7 @@ namespace FeatFinders
             achievement.CounterType != "fishCaught")
           continue;
 
-        achievement.CurrentValue = totalFishCaught;
-
-        if (achievement.CheckCompletion())
-        {
-          Monitor.Log(
-              $"Unlocked: {achievement.Name}!",
-              LogLevel.Info
-          );
-        }
+        SetProgress(achievement, totalFishCaught);
       }
     }
   }

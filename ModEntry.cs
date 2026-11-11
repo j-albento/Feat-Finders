@@ -60,15 +60,18 @@ namespace FeatFinders
 
     private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
     {
+      if (!Context.IsMainPlayer)
+        return;
+
       AchievementManager.LoadProgress();
     }
+
     private void OnSaving(object sender, SavingEventArgs e)
     {
       // Only the main player should save progress to avoid conflicts in multiplayer
       if (!Context.IsMainPlayer)
-      {
         return;
-      }
+
       AchievementManager.SaveProgress();
     }
 
@@ -228,17 +231,24 @@ namespace FeatFinders
         foreach (Achievement achievement in AchievementManager.Achievements)
         {
           if (achievement.Completed) continue;
-          if (achievement.Type == "depth" && achievement.Mode == currentMineType)
+
+          if (achievement.Type != "depth" ||
+              achievement.Mode != currentMineType)
           {
-            if (achievement.TargetValue.HasValue && currentDepth >= achievement.TargetValue.Value)
-            {
-              AchievementManager.CompleteAchievement(achievement);
-              Monitor.Log($"Unlocked: {achievement.Name}!", LogLevel.Info);
-            }
+
+            continue;
           }
+
+          if (achievement.TargetValue.HasValue)
+          {
+            continue;
+          }
+
+          AchievementManager.SetProgress(achievement, currentDepth);
         }
       }
     }
+
 
     private bool HasAllSkills(int targetLevel)
     {
@@ -319,7 +329,7 @@ namespace FeatFinders
       }
     }
 
-  
+
 
 
 
